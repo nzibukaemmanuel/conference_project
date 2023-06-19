@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Conference Detail</title>
+  <style>
+    /* Add your custom styles here */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-heading {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .section-content {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .button {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    .button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>{{ conference.title }}</h2>
+    <div class="section">
+      <h3 class="section-heading">Conference Details</h3>
+      <div class="section-content">
+        <p><strong>Description:</strong> {{ conference.description }}</p>
+        <p><strong>Location:</strong> {{ conference.location }}</p>
+        <p><strong>Date:</strong> {{ conference.date }}</p>
+        <!-- Additional conference details -->
+      </div>
+    </div>
+    <a class="button" href="{% url 'update_conference' conference.id %}">Update Conference</a>
+  </div>
+</body>
+</html>

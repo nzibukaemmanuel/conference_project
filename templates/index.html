@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Conference Website</title>
+  <style>
+    /* Add your custom styles here */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-heading {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .section-content {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Add your custom form styles here */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 5px;
+      font-size: 16px;
+    }
+
+    .form-group textarea {
+      height: 100px;
+    }
+
+    .form-group button {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+    }
+    .card {
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.card button {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+.header button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+
+  .header button:hover {
+    background-color: #555;
+  }
+   .new a {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+
+  .new a:hover {
+    background-color: #555;
+  }
+
+  </style>
+</head>
+<body>
+    <div class="header">
+      <h1>Conference App</h1>
+      <p>A conference is generally understood as a meeting of several people to discuss a particular topic. It is often confused with a convention, colloquia or symposium. While a conference differs from the others in terms of size and purpose, the term can be used to cover the general concept.</p>
+</div>
+
+  <div class="container">
+    <div class="section">
+      <h2 class="section-heading">Welcome</h2>
+      <p class="section-content">Welcome to the conference website! This is where you can find all the information about the event, including the schedule, speakers</p>
+    </div>
+
+  {% for conference in conferences %}
+          <div class="card">
+            <!-- {% static 'assets/img/favicon.png' %} -->
+            <h3>{{ conference.title }} </h3>
+            <div class="container">
+              <div class="section">
+                <h2 class="section-heading">Conference Details</h2>
+                <div class="section-content">
+                  <p>{{ conference.description }}</p>
+                  <p><strong>Location:</strong> {{ conference.location }}</p>
+                  <p><strong>Date:</strong> {{ conference.date }}</p>
+                  <!-- Additional conference details -->
+                </div>
+              </div>
+            </div>
+              <div class="new">
+                <a href="{% url 'update_meeting' conference.id %}">Update Conference</a>
+                <a href="{% url 'delete_meeting' conference.id %}">Delete Conference</a>
+              </div>
+            </div>
+          <hr>
+        {% endfor %}
+  <div class="new">
+  <a href="{% url 'create_meeting' %}">Create new meeting</a>
+</div>
+
+
+
+</div>
+</body>
+</html>

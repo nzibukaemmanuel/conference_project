@@ -1,12 +1,9 @@
-from django.urls import path, re_path
-from core import views
+from django.urls import path
+from .views import *
 urlpatterns = [
-    # www.conference.rw
-    path('', views.home_view, name='home'),
-    path('<str:number>/', views.testing_stuff, name='testing'),
-    # path('<pk:id>/', views.testing_stuff, name='testing'),
-    # path('<slug:slug>/', views.testing_stuff, name='testing'),
-
-    # www.conference.rw/about/
-    path('about/', views.about_view, name='about'),
+    path('index', index, name='index'),
+    path('create_meeting', create_meeting, name='create_meeting'),
+    path('conference/<int:conference_id>/', conference_detail, name='conference_detail'),
+    path('update_meeting/<int:meeting_id>/', update_meeting, name='update_meeting'),
+    path('delete_meeting/<int:conference_id>/', delete_meeting, name='delete_meeting'),
 ]
